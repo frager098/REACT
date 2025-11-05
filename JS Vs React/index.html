@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Vs React</title>
+    <style>
+        *,*::after,*::before{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Courier New', Courier, monospace;
+        }
+        section{
+            width: 60%;
+            margin: 0 auto;
+            margin-top:4em;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            /* border: 1px solid red; */
+        }
+        div{
+            display: flex;
+            justify-content: space-around;
+            /* border: 1px solid; */
+            flex-grow: 1;
+            align-items: center;
+        }
+        div button{
+            padding:8px;
+        }
+    </style>
+ </head>   
+ <body>
+    <section>
+        <div class="baskets basket__1">
+            <h1><span class="variable__1" >10</span> Apples</h1>
+            <button class="buttons" data-id="variable__1">-</button>
+        </div>
+        <div class="baskets basket__2">
+            <button class="buttons"  data-id="variable__2">-</button>
+            <h2><span class="variable__2">0</span> Apples</h2>
+        </div>
+    </section>
+    <script>
+        const variables = document.querySelectorAll('.variables')
+        const buttons = document.querySelectorAll('.buttons')
+        buttons.forEach(button=> button.addEventListener("click",updateBaskets,1))
+        function updateBaskets(event){
+            const btn = event.target
+            const variable = btn.dataset.id
+            update(variable)
+        }
+        function update(variable){
+            let increment,decrement,incrementApples,decrementApples;
+                if(variable == "variable__1"){
+                    decrement =(document.querySelector(`.${variable}`))
+                    increment =(document.querySelector(".variable__2"))
+                    
+                }
+                else{
+                    decrement =(document.querySelector(`.${variable}`))
+                    increment =(document.querySelector(`.variable__1`))
+                }
+                decrementApples = Number(decrement.innerHTML)
+                incrementApples = Number(increment.innerHTML)
+                if(incrementApples == 10 || decrementApples == 0) return
+                decrement.innerHTML = --decrementApples;
+                increment.innerHTML = ++incrementApples;
+        }
+    </script>
+ </body>
+</html>
