@@ -7,6 +7,7 @@ const container = <div>
     <p>{arrowFunc()}</p>
 </div>
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(container)
