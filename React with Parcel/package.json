@@ -1,0 +1,19 @@
+{
+  "name": "react-with-parcel",
+  "version": "1.0.0",
+  "description": "A bundler or build tool to use React efficiently.\r A bundler is a web development tool that combines multiple source files (JavaScript, CSS, images) into fewer, optimized files to improve browser loading performance. It manages module dependencies and automates tasks like minification and code splitting, ensuring consistent, efficient deployment",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  }
+}
