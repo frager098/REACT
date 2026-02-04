@@ -1,0 +1,14 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+.card{
+    border: 1px solid;
+    width: 30%;
+}
+.card img{
+    max-width: 100%;
+    /* width: 100%; */
+}
+.card p {
+    margin: 1px;
+}
