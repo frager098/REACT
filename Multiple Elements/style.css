@@ -34,8 +34,12 @@ h1 {
     cursor: pointer;
 
 }
-.card *{
-    border: 10px solid;
+.container{
+    align-items: stretch;
+}
+.card{
+    display: flex;
+    flex-direction: column;
 }
 .card:hover {
     transform: translateY(-8px);
@@ -93,8 +97,12 @@ h1 {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 8px 16px;
-    margin: 16px 0 0 0;
+    margin-top: auto;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
     font-weight: 600;
     border-radius: 0 0 12px 12px;
+    width: 100%;
 }
 
