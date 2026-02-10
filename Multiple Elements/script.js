@@ -10,7 +10,8 @@ const h2 = <h2>Hello React!</h2>
 //     <p>Best Seller</p>
 // </div>
 
-function card(key,title,image,description,category,price,rating){
+function card(props){
+    const {key,title,image,description,category,price,rating} = props
     return (
         <div className="card" key = {key}>
             <h3>S{title}</h3>
@@ -33,7 +34,15 @@ then(res => res.json()).
 then(data => {
     const container2 = data.products.map(product=>{
         console.log(product)
-        return card(product.id,product.title,product.thumbnail,product.description,product.category,product.price,product.rating)
+        return card({
+            key:product.id,
+            title:product.title,
+            image:product.thumbnail,
+            description:product.description,
+            category:product.category,
+            price:product.price,
+            rating:product.rating}
+        )
     })
     root.render(<div className='container'>{container2}</div>)
 }
