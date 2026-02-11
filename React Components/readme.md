@@ -1,0 +1,2 @@
+# Learnings
+fetch api fetch data and return data in call back functions asynchronously. Instructions outside call back executes synchronously. Therefore, instructions outside the callbacks may execute before and the result could be inaccessible outside the call backs.
