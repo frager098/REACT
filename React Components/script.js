@@ -1,4 +1,5 @@
 import {createRoot} from 'react-dom/client'
+import React from 'react'
 import getProducts from './data.js'
 import './style.css'
 async function getData(){
@@ -18,10 +19,10 @@ const h1 = {
     }
 }
 const Card = (props)=> {
-    const {key,title,image,description,category,price,rating} = props
+    const {title,image,description,category,price,rating} = props
     console.log(props)
     return (
-        <div className="card" key = {key}>
+        <div className="card">
             <h3>S{title}</h3>
             <img src={image} alt="" />
             <p>{description}</p>
@@ -43,21 +44,35 @@ const h2 = {
 }
 
 async function getCard(product){
-    const  card = {
-        $$typeof:Symbol.for('react.transitional.element'),
-        ref:null,
-        type: Card,
-        props:{
-            image: product.image,
-            title:product.title,
-            key:product.key,
-            description:product.description,
-            category:product.category,
-            price:product.price,
-            rating:product.rating,
-            className:'card'
-        }
-    }
+    
+    const card = React.createElement(Card,{
+        
+        image: product.image,
+        title:product.title,
+        key:product.key, //Key is used by react to manage multiple elements
+        //  when there are siblings we don't need to access it explicitly otherwise will get error
+        description:product.description,
+        category:product.category,
+        price:product.price,
+        rating:product.rating,
+        className:'card'
+    
+    })
+    // const  card = {
+    //     $$typeof:Symbol.for('react.transitional.element'),
+    //     ref:null,
+    //     type: Card,
+    //     props:{
+    //         image: product.image,
+    //         title:product.title,
+    //         key:product.key,
+    //         description:product.description,
+    //         category:product.category,
+    //         price:product.price,
+    //         rating:product.rating,
+    //         className:'card'
+    //     }
+    // }
     return card;
 }
 async function wait(){
