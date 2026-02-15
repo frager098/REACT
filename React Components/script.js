@@ -1,7 +1,14 @@
 import {createRoot} from 'react-dom/client'
 import getProducts from './data.js'
-const products = getProducts()
-products.then(res => console.log(res))
+import './style.css'
+async function getData(){
+    const productsList = await getProducts()
+    console.log(productsList[0])
+    return productsList[0]
+}
+
+
+
 const h1 = {
     $$typeof:Symbol.for('react.transitional.element'),
     ref:null,
@@ -10,15 +17,61 @@ const h1 = {
         children:"Hello World!"
     }
 }
-const Card = ()=> {return <h2>Hello React</h2>}
+const Card = (props)=> {
+    const {key,title,image,description,category,price,rating} = props
+    console.log(props)
+    return (
+        <div className="card" key = {key}>
+            <h3>S{title}</h3>
+            <img src={image} alt="" />
+            <p>{description}</p>
+            <p>{category }</p>
+            <p>{rating}*</p>
+            <p>${price}</p>
+            <p>Best Seller</p>
+        </div>
+    )
+}
+
 const h2 = {
     $$typeof:Symbol.for('react.transitional.element'),
     ref:null,
-    type: Card,
-    props:{}
+    type: 'h2',
+    props:{
+        children:"Hi"
+    }
 }
-console.log(h2)
-const container = <div>
-    {[h1,h2]}
+
+async function getCard(product){
+    const  card = {
+        $$typeof:Symbol.for('react.transitional.element'),
+        ref:null,
+        type: Card,
+        props:{
+            image: product.image,
+            title:product.title,
+            key:product.key,
+            description:product.description,
+            category:product.category,
+            price:product.price,
+            rating:product.rating,
+            className:'card'
+        }
+    }
+    return card;
+}
+async function wait(){
+    const productsList = await getData()
+    const cardsList = []
+    for(let i = 0 ; i < productsList.length ; i ++){
+        cardsList[i] =  getCard(productsList[i])
+    }
+    
+    return cardsList;
+}
+const container = <div className = 'container'>
+    {  
+     wait()
+    }
 </div>
 createRoot(document.querySelector('#root')).render(container)
