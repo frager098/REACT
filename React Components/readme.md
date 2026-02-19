@@ -6,3 +6,5 @@ At its core React Component is nothing but a react element with type function wh
 
 Component is a function which returns react element.
 link:'https://stackoverflow.com/questions/30971395/difference-between-react-component-and-react-element'
+
+React Component is a JS function which is called by a React Element(JS Object) with type function and it returns a JS object(React Element) which is rendered by rendered method of React Dom.

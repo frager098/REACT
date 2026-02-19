@@ -18,12 +18,12 @@ const h1 = {
         children:"Hello World!"
     }
 }
-const Card = (props)=> {
-    const {title,image,description,category,price,rating} = props
-    console.log(props)
+const Card = ({title,image,description,category,price,rating})=> {
+    // const {title,image,description,category,price,rating} = props
+    // console.log(props)
     return (
         <div className="card">
-            <h3>S{title}</h3>
+            <h3>{title}</h3>
             <img src={image} alt="" />
             <p>{description}</p>
             <p>{category }</p>
@@ -45,19 +45,24 @@ const h2 = {
 
 async function getCard(product){
     
-    const card = React.createElement(Card,{
+    return <Card image = {product.image} title = {product.title}
+    key = {product.key} description = {product.description}
+    category = {product.category} price = {product.price}
+    rating = {product.rating} className = "card"
+    />
+    //     const card = React.createElement(Card,{
         
-        image: product.image,
-        title:product.title,
-        key:product.key, //Key is used by react to manage multiple elements
-        //  when there are siblings we don't need to access it explicitly otherwise will get error
-        description:product.description,
-        category:product.category,
-        price:product.price,
-        rating:product.rating,
-        className:'card'
+    //     image: product.image,
+    //     title:product.title,
+    //     key:product.key, //Key is used by react to manage multiple elements
+    //     //  when there are siblings we don't need to access it explicitly otherwise will get error
+    //     description:product.description,
+    //     category:product.category,
+    //     price:product.price,
+    //     rating:product.rating,
+    //     className:'card'
     
-    })
+    // })
     // const  card = {
     //     $$typeof:Symbol.for('react.transitional.element'),
     //     ref:null,
@@ -73,7 +78,7 @@ async function getCard(product){
     //         className:'card'
     //     }
     // }
-    return card;
+    // return card;
 }
 async function wait(){
     const productsList = await getData()
@@ -81,7 +86,6 @@ async function wait(){
     for(let i = 0 ; i < productsList.length ; i ++){
         cardsList[i] =  getCard(productsList[i])
     }
-    
     return cardsList;
 }
 const container = <div className = 'container'>
